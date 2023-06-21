@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
     email: {
         type: String,
         required: true,
@@ -9,28 +13,25 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    name: {
-        type: String,
-        required: true,
-    },
     address: {
         type: String,
-        required: true,
+        required: false,
     },
     age: {
         type: Number,
-        required: true,
+        required: false,
     },
     phone: {
         type: String,
-        required: true,
+        required: false,
     },
     photo: {
         type: String,
-        required: true,
+        required: false,
     },
     groups: [{
         type: mongoose.Schema.Types.ObjectId,
+        required: false,
         ref: "Group",
     }],
 });
