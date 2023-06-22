@@ -23,10 +23,12 @@ const groupSchema = new mongoose.Schema({
     },
     participants: [{
         type: mongoose.Schema.Types.ObjectId,
+        required: false,
         ref: "User",
     }],
     waitlist: [{
         type: mongoose.Schema.Types.ObjectId,
+        required: false,
         ref: "User",
     }],
 });
