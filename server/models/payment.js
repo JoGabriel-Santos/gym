@@ -16,8 +16,8 @@ const paymentSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ["paid", "pending", "overdue"],
-        default: "pending",
+        enum: ["PAID", "PENDING", "OVERDUE"],
+        required: true,
     },
     payment_history: [{
         date: {
