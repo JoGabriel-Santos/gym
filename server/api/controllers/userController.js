@@ -16,12 +16,10 @@ export const enrollStudentInGroup = async (request, response) => {
             return response.status(404).json({ message: "Group not found" });
         }
 
-        /*
         const payment = await Payment.findOne({ user_id: userId, status: "PAID" });
         if (!payment) {
             return response.status(403).json({ message: "User must have a paid membership to enroll in a group" });
         }
-        */
 
         const user = await User.findById(userId);
         if (!user) {
