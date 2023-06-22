@@ -11,10 +11,10 @@ export const processInitialPayment = async (request, response) => {
             return response.status(403).json({ message: "Payment record already exists for this user" });
         }
 
-        const curDateAPI = await getDateTime();
-        const curDate = new Date(curDateAPI);
+        const currentDateAPI = await getDateTime();
+        const currentDate = new Date(currentDateAPI);
 
-        const dueDateAPI = curDateAPI.add(31, "days").format("YYYY-MM-DD");
+        const dueDateAPI = currentDateAPI.add(31, "days").format("YYYY-MM-DD");
         const dueDate = new Date(dueDateAPI);
 
         const payment = new Payment({
@@ -22,7 +22,7 @@ export const processInitialPayment = async (request, response) => {
             amount: amount,
             due_date: dueDate,
             status: "PAID",
-            payment_history: [{ date: curDate, amount: amount }],
+            payment_history: [{ date: currentDate, amount: amount }],
         });
 
         await payment.save();
