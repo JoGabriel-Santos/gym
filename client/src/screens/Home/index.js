@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { View, Text } from "react-native";
 
-import styles from "./styles";
-
 import NavBar from "../../components/NavBar";
 import ProfileImage from "../../components/ProfileImage";
+
+import styles from "./styles";
 
 const Home = () => {
     const [activeButton, setActiveButton] = useState("Home");
