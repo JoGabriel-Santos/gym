@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, TouchableOpacity, SafeAreaView, View } from "react-native";
 
 import Input from "../../components/Input";
@@ -6,6 +6,11 @@ import Input from "../../components/Input";
 import styles from "./styles";
 
 const Auth = () => {
+    const [isLoggingIn, setIsLoggingIn] = useState(true);
+
+    const handleToggleIsLoggingIn = () => {
+        setIsLoggingIn(prevIsLoggingIn => !prevIsLoggingIn);
+    }
 
     return (
         <SafeAreaView>
@@ -16,30 +21,41 @@ const Auth = () => {
                 </View>
 
                 <View style={styles.inputField}>
+                    {
+                        !isLoggingIn &&
+                        <Input placeholder="Nome"/>
+                    }
                     <Input placeholder="Email"/>
-                    <Input placeholder="Password"/>
+                    <Input placeholder="Senha"/>
                 </View>
 
-                <TouchableOpacity>
-                    <Text style={styles.forgotPasswordText}>
-                        Esqueceu sua senha?
-                    </Text>
-                </TouchableOpacity>
+                {
+                    isLoggingIn &&
+                    <TouchableOpacity>
+                        <Text style={styles.forgotPasswordText}>
+                            Esqueceu sua senha?
+                        </Text>
+                    </TouchableOpacity>
+                }
 
                 <TouchableOpacity style={styles.signinButton}>
                     <Text style={styles.signinText}>
-                        Entrar
+                        {
+                            isLoggingIn ? "Entrar" : "Criar conta"
+                        }
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.signupButton}>
+                <TouchableOpacity style={styles.signupButton} onPress={() => handleToggleIsLoggingIn()}>
                     <Text style={styles.signupText}>
-                        Criar nova conta
+                        {
+                            isLoggingIn ? "Criar nova conta" : "Entrar em uma conta existente"
+                        }
                     </Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
     )
-}
+};
 
 export default Auth;

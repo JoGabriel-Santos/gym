@@ -6,20 +6,20 @@ const styles = StyleSheet.create({
         height: "100%",
         justifyContent: "center",
         paddingHorizontal: 20,
-        marginTop: StatusBar.currentHeight
+        marginTop: StatusBar.currentHeight,
     },
     header: {
         alignItems: "center",
     },
     logoText: {
         color: "#333",
-        fontFamily: "poppins-bold",
-        fontSize: 30,
+        fontFamily: "dosis-bold",
+        fontSize: 35,
         marginVertical: 30,
     },
     sloganText: {
-        fontFamily: "poppins-semiBold",
-        fontSize: 20,
+        fontFamily: "dosis-semiBold",
+        fontSize: 25,
         textAlign: "center",
     },
     inputField: {
@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     forgotPasswordText: {
         alignSelf: "flex-end",
         color: "#333",
-        fontFamily: "poppins-semiBold",
-        fontSize: 14,
+        fontFamily: "dosis-semiBold",
+        fontSize: 16,
     },
     signinButton: {
         backgroundColor: "#f9c22a",
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     },
     signinText: {
         color: "white",
-        fontFamily: "poppins-bold",
+        fontFamily: "dosis-bold",
         fontSize: 20,
         textAlign: "center",
     },
@@ -48,10 +48,10 @@ const styles = StyleSheet.create({
     },
     signupText: {
         color: "#333",
-        fontFamily: "poppins-regular",
-        fontSize: 18,
-        marginBottom: StatusBar.currentHeight,
+        fontFamily: "dosis-regular",
+        fontSize: 20,
         textAlign: "center",
+        marginBottom: StatusBar.currentHeight
     },
 });
 

@@ -22,9 +22,9 @@ const styles = StyleSheet.create({
         borderColor: "#888",
         borderRadius: 10,
         borderWidth: 1,
-        fontFamily: "poppins-regular",
-        fontSize: 16,
-        padding: 20,
+        fontFamily: "dosis-regular",
+        fontSize: 20,
+        padding: 15,
         marginVertical: 10,
     },
     focused: {
