@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { TextInput, TouchableOpacity, View, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const Input = ({ ...placeHolder }) => {
+const Input = ({ placeHolder, onChangeText, value }) => {
     const [focused, setFocused] = useState(false);
     const [passwordVisible, setPasswordVisible] = useState(false);
-    const isPassword = placeHolder.placeholder === "Senha";
+    const isPassword = placeHolder === "Senha";
+
+    const handleTextChange = (text) => {
+        onChangeText(text);
+    };
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
@@ -17,10 +21,11 @@ const Input = ({ ...placeHolder }) => {
                 style={[styles.textInput, focused && styles.focused]}
                 onBlur={() => setFocused(false)}
                 onFocus={() => setFocused(true)}
-                placeholderTextColor={"#333"}
+                placeholder={placeHolder}
+                placeholderTextColor={"#999"}
+                onChangeText={handleTextChange}
+                value={value}
                 secureTextEntry={!passwordVisible && isPassword}
-
-                {...placeHolder}
             />
 
             {
@@ -51,8 +56,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 1,
         fontFamily: "dosis-regular",
-        fontSize: 20,
-        padding: 15,
+        fontSize: 24,
+        padding: 18,
         marginVertical: 10,
     },
     focused: {

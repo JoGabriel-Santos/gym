@@ -6,7 +6,22 @@ import Input from "../../components/Input";
 import styles from "./styles";
 
 const Auth = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [isLoggingIn, setIsLoggingIn] = useState(true);
+
+    const handleNameChange = (text) => {
+        setName(text);
+    };
+
+    const handleEmailChange = (text) => {
+        setEmail(text);
+    };
+
+    const handlePasswordChange = (text) => {
+        setPassword(text);
+    };
 
     const handleToggleIsLoggingIn = () => {
         setIsLoggingIn(prevIsLoggingIn => !prevIsLoggingIn);
@@ -21,12 +36,10 @@ const Auth = () => {
                 </View>
 
                 <View style={styles.inputField}>
-                    {
-                        !isLoggingIn &&
-                        <Input placeholder="Nome"/>
-                    }
-                    <Input placeholder="Email"/>
-                    <Input placeholder="Senha"/>
+                    {!isLoggingIn &&
+                        <Input placeHolder="Nome" onChangeText={handleNameChange} value={name}/>}
+                    <Input placeHolder="Email" onChangeText={handleEmailChange} value={email}/>
+                    <Input placeHolder="Senha" onChangeText={handlePasswordChange} value={password}/>
                 </View>
 
                 {
@@ -40,17 +53,13 @@ const Auth = () => {
 
                 <TouchableOpacity style={styles.signinButton}>
                     <Text style={styles.signinText}>
-                        {
-                            isLoggingIn ? "Entrar" : "Criar conta"
-                        }
+                        {isLoggingIn ? "Entrar" : "Criar conta"}
                     </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.signupButton} onPress={() => handleToggleIsLoggingIn()}>
                     <Text style={styles.signupText}>
-                        {
-                            isLoggingIn ? "Criar nova conta" : "Entrar em uma conta existente"
-                        }
+                        {isLoggingIn ? "Criar nova conta" : "Entrar em uma conta existente"}
                     </Text>
                 </TouchableOpacity>
             </View>
