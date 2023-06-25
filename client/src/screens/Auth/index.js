@@ -1,47 +1,44 @@
-import React, { useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { Text, TouchableOpacity, SafeAreaView, View } from "react-native";
+
+import Input from "../../components/Input";
 
 import styles from "./styles";
 
 const Auth = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    const handleLogin = () => {
-        console.log("Email: ", email);
-        console.log("Password: ", password);
-    };
 
     return (
-        <View style={styles.container}>
-            <TextInput
-                style={styles.input}
-                onChangeText={input => setEmail(input)}
-                placeholder="Email"
-                value={email}
-                autoCapitalize="none"
-                keyboardType="email-address"
-            ></TextInput>
+        <SafeAreaView>
+            <View style={styles.authView}>
+                <View style={styles.header}>
+                    <Text style={styles.logoText}>Corpo em Movimento</Text>
+                    <Text style={styles.sloganText}>Musculação e Ginástica</Text>
+                </View>
 
-            <TextInput
-                style={styles.input}
-                onChangeText={input => setPassword(input)}
-                placeholder="Password"
-                value={password}
-                secureTextEntry
-            ></TextInput>
+                <View style={styles.inputField}>
+                    <Input placeholder="Email"/>
+                    <Input placeholder="Password"/>
+                </View>
 
-            <TouchableOpacity
-                style={styles.button}
-                onPress={handleLogin}
-            >
-                <Text style={styles.buttonText}>Login</Text>
-            </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text style={styles.forgotPasswordText}>
+                        Esqueceu sua senha?
+                    </Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonToggleView}>
-                <Text style={styles.buttonToggle}>Don't have an account?</Text>
-            </TouchableOpacity>
-        </View>
+                <TouchableOpacity style={styles.signinButton}>
+                    <Text style={styles.signinText}>
+                        Entrar
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.signupButton}>
+                    <Text style={styles.signupText}>
+                        Criar nova conta
+                    </Text>
+                </TouchableOpacity>
+            </View>
+        </SafeAreaView>
     )
 }
 

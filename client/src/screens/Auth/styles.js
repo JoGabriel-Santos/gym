@@ -1,37 +1,57 @@
-import { StyleSheet } from "react-native";
+import { StatusBar, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+    authView: {
+        backgroundColor: "#fff8ee",
+        height: "100%",
         justifyContent: "center",
-        paddingHorizontal: 16,
+        paddingHorizontal: 20,
+        marginTop: StatusBar.currentHeight
     },
-    button: {
-        backgroundColor: "#f9c22a",
-        borderRadius: 8,
-        paddingVertical: 15,
+    header: {
+        alignItems: "center",
     },
-    buttonText: {
-        color: "#ffffff",
-        fontSize: 16,
-        fontWeight: "bold",
+    logoText: {
+        color: "#333",
+        fontFamily: "poppins-bold",
+        fontSize: 30,
+        marginVertical: 30,
+    },
+    sloganText: {
+        fontFamily: "poppins-semiBold",
+        fontSize: 20,
         textAlign: "center",
     },
-    buttonToggleView: {
-        alignItems: "flex-end",
+    inputField: {
+        marginVertical: 30,
     },
-    buttonToggle: {
+    forgotPasswordText: {
+        alignSelf: "flex-end",
         color: "#333",
-        fontSize: 16,
-        paddingVertical: 15,
+        fontFamily: "poppins-semiBold",
+        fontSize: 14,
     },
-    input: {
-        borderColor: "#333",
-        borderRadius: 8,
-        borderWidth: 1,
-        height: 50,
-        marginBottom: 16,
-        paddingHorizontal: 8,
+    signinButton: {
+        backgroundColor: "#f9c22a",
+        borderRadius: 10,
+        marginVertical: 30,
+        padding: 20,
+    },
+    signinText: {
+        color: "white",
+        fontFamily: "poppins-bold",
+        fontSize: 20,
+        textAlign: "center",
+    },
+    signupButton: {
+        padding: 10,
+    },
+    signupText: {
+        color: "#333",
+        fontFamily: "poppins-regular",
+        fontSize: 18,
+        marginBottom: StatusBar.currentHeight,
+        textAlign: "center",
     },
 });
 
