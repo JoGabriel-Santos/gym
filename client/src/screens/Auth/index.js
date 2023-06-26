@@ -3,6 +3,8 @@ import { Text, TouchableOpacity, SafeAreaView, View } from "react-native";
 
 import Input from "../../components/Input";
 
+import * as API from "../../api/index";
+
 import styles from "./styles";
 
 const Auth = () => {
@@ -10,6 +12,21 @@ const Auth = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoggingIn, setIsLoggingIn] = useState(true);
+
+    const handleAuthentication = () => {
+        const userInfo = JSON.stringify({
+            name: name,
+            email: email,
+            password: password
+        });
+
+        if (isLoggingIn) {
+            API.signin(userInfo);
+
+        } else {
+            API.signup(userInfo);
+        }
+    }
 
     const handleNameChange = (text) => {
         setName(text);
@@ -51,7 +68,7 @@ const Auth = () => {
                     </TouchableOpacity>
                 }
 
-                <TouchableOpacity style={styles.signinButton}>
+                <TouchableOpacity style={styles.signinButton} onPress={() => handleAuthentication()}>
                     <Text style={styles.signinText}>
                         {isLoggingIn ? "Entrar" : "Criar conta"}
                     </Text>
