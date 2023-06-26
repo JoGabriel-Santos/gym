@@ -14,11 +14,7 @@ const Auth = () => {
     const [isLoggingIn, setIsLoggingIn] = useState(true);
 
     const handleAuthentication = () => {
-        const userInfo = JSON.stringify({
-            name: name,
-            email: email,
-            password: password
-        });
+        const userInfo = { name, email, password };
 
         if (isLoggingIn) {
             API.signin(userInfo);

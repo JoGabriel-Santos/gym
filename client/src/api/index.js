@@ -1,17 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000" });
+const API = axios.create({ baseURL: "http://192.168.1.8:5000" });
 
-export const signin = () => API.post("/user/signin")
-    .catch((error) => {
-        console.error("Error occurred during signin:", error);
-
-        throw error;
-    });
-
-export const signup = (userInfo) => API.post("/user/signup", userInfo)
-    .catch((error) => {
-        console.error("Error occurred during signup:", error);
-
-        throw error;
-    });
+export const signin = (userInfo) => API.post("/user/signin", userInfo);
+export const signup = (userInfo) => API.post("/user/signup", userInfo);
