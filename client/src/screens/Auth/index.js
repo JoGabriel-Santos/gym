@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Text, TouchableOpacity, SafeAreaView, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import Input from "../../components/Input";
 
@@ -13,15 +16,21 @@ const Auth = () => {
     const [password, setPassword] = useState('');
     const [isLoggingIn, setIsLoggingIn] = useState(true);
 
-    const handleAuthentication = () => {
+    const navigation = useNavigation();
+
+    const handleAuthentication = async () => {
         const userInfo = { name, email, password };
 
         if (isLoggingIn) {
-            API.signin(userInfo);
+            const { data } = await API.signin(userInfo);
+            await AsyncStorage.setItem("userInfo", JSON.stringify(data.result));
 
         } else {
-            API.signup(userInfo);
+            const { data } = await API.signup(userInfo);
+            await AsyncStorage.setItem("userInfo", JSON.stringify(data.result));
         }
+
+        navigation.navigate("Home");
     }
 
     const handleNameChange = (text) => {

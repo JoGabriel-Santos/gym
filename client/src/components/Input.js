@@ -36,7 +36,7 @@ const Input = ({ placeHolder, onChangeText, value }) => {
                     >
                         <Ionicons
                             name={passwordVisible ? 'eye-off' : 'eye'}
-                            size={20}
+                            size={25}
                             color="#888"
                         />
                     </TouchableOpacity>

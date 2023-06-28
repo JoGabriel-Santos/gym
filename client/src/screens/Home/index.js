@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import NavBar from "../../components/NavBar";
 import ProfileImage from "../../components/ProfileImage";
@@ -7,15 +9,29 @@ import ProfileImage from "../../components/ProfileImage";
 import styles from "./styles";
 
 const Home = () => {
+    const [userInfo, setUserInfo] = useState("");
+
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const user = await AsyncStorage.getItem("userInfo");
+                if (user) {
+                    const userInfoJSON = JSON.parse(user);
+                    setUserInfo(userInfoJSON);
+                }
+
+            } catch (error) {
+                console.log("An error occurred: ", error);
+            }
+        };
+
+        fetchUserInfo();
+    }, []);
+
     const [activeButton, setActiveButton] = useState("Home");
 
     const handleButtonPress = (buttonName) => {
         setActiveButton(buttonName);
-    };
-
-    const user = {
-        name: "João Gabriel",
-        imageUrl: "https://avatars.githubusercontent.com/u/99566656?v=4",
     };
 
     return (
@@ -23,10 +39,10 @@ const Home = () => {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View style={styles.userInformation}>
-                        <Text style={styles.userName}>Welcome, {user.name}</Text>
+                        <Text style={styles.userName}>Welcome, {userInfo.name}</Text>
                     </View>
 
-                    <ProfileImage imageUrl={user.imageUrl}/>
+                    <ProfileImage imageUrl={userInfo.photo}/>
                 </View>
             </View>
 
