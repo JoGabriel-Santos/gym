@@ -13,7 +13,7 @@ export const enrollStudentInGroup = async (request, response) => {
     try {
         const group = await Group.findById(groupId);
         if (!group) {
-            return response.status(404).json({ message: "Group not found" });
+            return response.status(404).json({ message: "Groups not found" });
         }
 
         const payment = await Payment.findOne({ user_id: userId, status: "PAID" });
@@ -27,7 +27,7 @@ export const enrollStudentInGroup = async (request, response) => {
         }
 
         if (group.participants.length >= group.max_capacity) {
-            return response.status(403).json({ message: "Group is full. User can be added to the waitlist" });
+            return response.status(403).json({ message: "Groups is full. User can be added to the waitlist" });
         }
 
         // Add the group ID to the user's groups array

@@ -19,7 +19,7 @@ const Auth = () => {
     const navigation = useNavigation();
 
     const handleAuthentication = async () => {
-        const userInfo = { name, email, password };
+        const userInfo = { name, email: "jgabriel.personal@gmail.com", password: "pass" };
 
         if (isLoggingIn) {
             const { data } = await API.signin(userInfo);

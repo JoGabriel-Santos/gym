@@ -3,8 +3,10 @@ import { View, Text } from "react-native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import NavBar from "../../components/NavBar";
 import ProfileImage from "../../components/ProfileImage";
+import Groups from "../../components/Groups";
+
+import * as API from "../../api/index";
 
 import styles from "./styles";
 
@@ -28,12 +30,6 @@ const Home = () => {
         fetchUserInfo();
     }, []);
 
-    const [activeButton, setActiveButton] = useState("Home");
-
-    const handleButtonPress = (buttonName) => {
-        setActiveButton(buttonName);
-    };
-
     return (
         <View style={styles.homeView}>
             <View style={styles.container}>
@@ -46,11 +42,9 @@ const Home = () => {
                 </View>
             </View>
 
-            <View style={styles.groupList}>
-                <Text>Group List</Text>
+            <View style={styles.containerList}>
+                <Groups/>
             </View>
-
-            <NavBar activeButton={activeButton} onButtonPress={handleButtonPress}/>
         </View>
     );
 };

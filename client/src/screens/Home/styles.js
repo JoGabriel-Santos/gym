@@ -6,9 +6,14 @@ const styles = StyleSheet.create({
     },
     container: {
         alignItems: "center",
-        backgroundColor: "#f9f9f9",
+        backgroundColor: "#fff8ee",
         paddingTop: StatusBar.currentHeight + 15,
         paddingVertical: 15,
+    },
+    containerList: {
+        backgroundColor: "#fff8ee",
+        flex: 1,
+        padding: 16,
     },
     header: {
         alignItems: "center",
@@ -20,7 +25,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     userName: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: "bold",
         color: "#333",
     },
