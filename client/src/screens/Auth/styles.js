@@ -2,7 +2,7 @@ import { StatusBar, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     authView: {
-        backgroundColor: "#fff8ee",
+        backgroundColor: "#1C1C1E",
         height: "100%",
         justifyContent: "center",
         paddingHorizontal: 20,
@@ -12,12 +12,13 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     logoText: {
-        color: "#333",
+        color: "#fff",
         fontFamily: "dosis-bold",
         fontSize: 35,
         marginVertical: 30,
     },
     sloganText: {
+        color: "#fff",
         fontFamily: "dosis-semiBold",
         fontSize: 25,
         textAlign: "center",
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     },
     forgotPasswordText: {
         alignSelf: "flex-end",
-        color: "#333",
+        color: "#f9c22a",
         fontFamily: "dosis-semiBold",
         fontSize: 16,
     },
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     signupText: {
-        color: "#333",
+        color: "#f9c22a",
         fontFamily: "dosis-regular",
         fontSize: 20,
         textAlign: "center",

@@ -3,44 +3,26 @@ import { ActivityIndicator, FlatList, Image, View, Text, TouchableOpacity, Style
 
 import * as API from "../api";
 
-const data = [
-    {
-        id: 1,
-        image: require('../utils/images/gym-img.jpg'),
-        name: 'Grupo 1',
-        schedule: 'Segunda e Quarta, 18:00 - 19:00',
-        instructor: 'João Silva',
-        description: 'Treinamento funcional para fortalecimento e condicionamento',
-        max_capacity: 15
-    },
-    {
-        id: 2,
-        image: require('../utils/images/gym-img.jpg'),
-        name: 'Grupo 2',
-        schedule: 'Terça e Quinta, 19:00 - 20:00',
-        instructor: 'Maria Souza',
-        description: 'Aulas de dança para todos os níveis',
-        max_capacity: 20
-    },
-    // Adicione mais grupos aqui
-];
-
 const Groups = () => {
     const [groupList, setGroupList] = useState([]);
+
+    console.log(groupList)
 
     const renderGroup = ({ item: group }) => (
         <TouchableOpacity>
             <View style={styles.itemContainer}>
-                <Image style={styles.image} source={require('../utils/images/gym-img.jpg')}/>
+                <Image style={styles.image} source={{ uri: group.image }} />
 
+                <View style={styles.imageOverlay} />
                 <View style={styles.textContainer}>
                     <Text style={styles.name}>{group.name}</Text>
                     <Text style={styles.schedule}>{group.schedule}</Text>
-                    <Text style={styles.instructor}>Instrutor: {group.instructor}</Text>
                 </View>
             </View>
         </TouchableOpacity>
     );
+
+
 
     useEffect(() => {
         const fetchGroups = async () => {
@@ -57,7 +39,7 @@ const Groups = () => {
     }, []);
 
     if (groupList.length === 0) {
-        return <ActivityIndicator/>; // Mostrar um indicador de carregamento enquanto aguarda a conclusão da chamada assíncrona
+        return <ActivityIndicator/>;
     }
 
     return (
@@ -72,34 +54,42 @@ const Groups = () => {
 const styles = StyleSheet.create({
     itemContainer: {
         backgroundColor: "#fff",
-        borderColor: "#ccc",
+        borderColor: "#f9c22a",
         borderRadius: 8,
         borderWidth: 1,
         flexDirection: "row",
         marginBottom: 16,
-        padding: 12,
+        height: 160, // Definindo a altura do cartão para 160 pixels
     },
     image: {
         borderRadius: 8,
-        height: 80,
-        marginRight: 12,
-        marginVertical: "auto",
-        width: 80,
+        flex: 1,
+        height: null,
+        width: null,
+        resizeMode: "cover", // Redimensionar a imagem para preencher o espaço
+    },
+    imageOverlay: {
+        ...StyleSheet.absoluteFillObject, // Preencher todo o espaço disponível na camada
+        backgroundColor: "rgba(0, 0, 0, 0.3)", // Cor escura com 30% de opacidade
+        borderRadius: 8,
+    },
+
+    textContainer: {
+        position: "absolute",
+        bottom: 12,
+        left: 12,
     },
     name: {
-        fontSize: 18,
-        fontWeight: "bold",
-        marginBottom: 4,
+        fontSize: 25,
+        fontFamily: "dosis-semiBold",
+        color: "#f9c22a",
     },
     schedule: {
-        color: "#888",
-        fontSize: 14,
-        marginBottom: 4,
-    },
-    instructor: {
-        fontSize: 14,
-        marginBottom: 4,
+        fontSize: 18,
+        color: "#fff",
+        fontFamily: "dosis-regular",
     },
 });
+
 
 export default Groups;

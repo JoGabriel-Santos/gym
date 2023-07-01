@@ -17,6 +17,10 @@ const groupSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    image: {
+        type: String,
+        required: true,
+    },
     max_capacity: {
         type: Number,
         required: true,

@@ -6,12 +6,12 @@ const styles = StyleSheet.create({
     },
     container: {
         alignItems: "center",
-        backgroundColor: "#fff8ee",
+        backgroundColor: "#1C1C1E",
         paddingTop: StatusBar.currentHeight + 15,
         paddingVertical: 15,
     },
     containerList: {
-        backgroundColor: "#fff8ee",
+        backgroundColor: "#1C1C1E",
         flex: 1,
         padding: 16,
     },
@@ -20,19 +20,42 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         paddingHorizontal: 20,
+        paddingVertical: 15,
     },
     userInformation: {
         flex: 1,
     },
     userName: {
-        fontSize: 20,
-        fontWeight: "bold",
-        color: "#333",
+        fontSize: 28,
+        fontFamily: "dosis-bold",
+        color: "#fff",
+    },
+    greeting: {
+        fontSize: 22,
+        fontFamily: "dosis-regular",
+        color: "#fff",
     },
     groupList: {
         backgroundColor: "#f9f9f9",
         flex: 1
-    }
+    },
+    headerGroups: {
+        alignItems: "baseline",
+        backgroundColor: "#1C1C1E",
+        paddingHorizontal: 20,
+        flexDirection: "row",
+        justifyContent: "space-between"
+    },
+    headerGroupsText: {
+        color: "#fff",
+        fontSize: 24,
+        fontFamily: "dosis-semiBold",
+    },
+    headerGroupsLink: {
+        color: "#f9c22a",
+        fontSize: 18,
+        fontFamily: "dosis-semiBold",
+    },
 });
 
 export default styles;

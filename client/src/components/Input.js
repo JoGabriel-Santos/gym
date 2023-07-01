@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         borderColor: "#888",
         borderRadius: 10,
-        borderWidth: 1,
+        borderWidth: 2,
         fontFamily: "dosis-regular",
         fontSize: 24,
         padding: 18,
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     },
     focused: {
         borderColor: "#f9c22a",
-        borderWidth: 1,
+        borderWidth: 2,
     },
     toggleButton: {
         position: "absolute",
