@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { TextInput, TouchableOpacity, View, StyleSheet } from "react-native";
+import React, { useState, useRef } from "react";
+import { TextInput, View, StyleSheet, Animated } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 const Input = ({ placeHolder, onChangeText, value }) => {
     const [focused, setFocused] = useState(false);
     const [passwordVisible, setPasswordVisible] = useState(false);
     const isPassword = placeHolder === "Senha";
+
+    const animatedPlaceholder = useRef(new Animated.Value(value ? 1 : 0)).current;
 
     const handleTextChange = (text) => {
         onChangeText(text);
@@ -15,60 +17,102 @@ const Input = ({ placeHolder, onChangeText, value }) => {
         setPasswordVisible(!passwordVisible);
     };
 
+    const handleInputFocus = () => {
+        setFocused(true);
+        Animated.timing(animatedPlaceholder, {
+            toValue: 1,
+            duration: 180,
+            useNativeDriver: false,
+        }).start();
+    };
+
+    const handleInputBlur = () => {
+        if (!value) {
+            setFocused(false);
+            Animated.timing(animatedPlaceholder, {
+                toValue: 0,
+                duration: 180,
+                useNativeDriver: false,
+            }).start();
+        }
+    };
+
+    const placeholderTranslateY = animatedPlaceholder.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, -28],
+    });
+
+    const placeholderScale = animatedPlaceholder.interpolate({
+        inputRange: [0, 1],
+        outputRange: [20, 14],
+    });
+
+    const placeholderColor = animatedPlaceholder.interpolate({
+        inputRange: [0, 1],
+        outputRange: ["#999", "#f9c22a"],
+    });
+
     return (
         <View style={styles.container}>
+            <Animated.Text
+                style={[
+                    styles.placeholder,
+                    {
+                        transform: [{ translateY: placeholderTranslateY }],
+                        fontSize: placeholderScale,
+                        color: placeholderColor,
+                    },
+                ]}
+            >
+                {placeHolder}
+            </Animated.Text>
+
             <TextInput
-                style={[styles.textInput, focused && styles.focused]}
-                onBlur={() => setFocused(false)}
-                onFocus={() => setFocused(true)}
-                placeholder={placeHolder}
-                placeholderTextColor={"#999"}
+                style={styles.textInput}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
                 onChangeText={handleTextChange}
-                value={value}
                 secureTextEntry={!passwordVisible && isPassword}
+                value={value}
             />
 
-            {
-                isPassword && (
-                    <TouchableOpacity
-                        style={styles.toggleButton}
-                        onPress={togglePasswordVisibility}
-                    >
-                        <Ionicons
-                            name={passwordVisible ? 'eye-off' : 'eye'}
-                            size={25}
-                            color="#888"
-                        />
-                    </TouchableOpacity>
-                )
-            }
+            {isPassword && (
+                <Ionicons
+                    name={passwordVisible ? "eye-off" : "eye"}
+                    color="#888"
+                    size={25}
+                    style={styles.toggleButton}
+                    onPress={togglePasswordVisibility}
+                />
+            )}
         </View>
-    )
+    );
 };
 
 const styles = StyleSheet.create({
     container: {
+        marginVertical: 10,
         position: "relative",
     },
     textInput: {
-        backgroundColor: "#fff",
-        borderColor: "#888",
-        borderRadius: 10,
-        borderWidth: 2,
+        borderBottomColor: "#454242",
+        borderBottomWidth: 1,
+        color: "#fff",
         fontFamily: "dosis-regular",
-        fontSize: 24,
-        padding: 18,
-        marginVertical: 10,
+        fontSize: 20,
+        paddingHorizontal: 10,
+        paddingVertical: 20,
     },
-    focused: {
-        borderColor: "#f9c22a",
-        borderWidth: 2,
+    placeholder: {
+        fontFamily: "dosis-regular",
+        left: 10,
+        position: "absolute",
+        top: 25,
     },
     toggleButton: {
         position: "absolute",
-        right: 15,
-        top: "50%",
-        transform: [{ translateY: -12 }],
+        right: 10,
+        top: 24,
     },
 });
 
