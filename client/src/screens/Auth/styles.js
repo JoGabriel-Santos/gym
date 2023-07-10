@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
         height: "100%",
         justifyContent: "center",
         paddingHorizontal: 20,
-        marginTop: StatusBar.currentHeight,
     },
     header: {
         alignItems: "center",
@@ -52,7 +51,6 @@ const styles = StyleSheet.create({
         fontFamily: "dosis-regular",
         fontSize: 20,
         textAlign: "center",
-        marginBottom: StatusBar.currentHeight
     },
 });
 
