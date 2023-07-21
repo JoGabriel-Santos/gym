@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 const Input = ({ placeHolder, onChangeText, value }) => {
     const [focused, setFocused] = useState(false);
     const [passwordVisible, setPasswordVisible] = useState(false);
-    const isPassword = placeHolder === "Senha";
+    const isPassword = placeHolder === "Password";
 
     const animatedPlaceholder = useRef(new Animated.Value(value ? 1 : 0)).current;
 
@@ -39,7 +39,7 @@ const Input = ({ placeHolder, onChangeText, value }) => {
 
     const placeholderTranslateY = animatedPlaceholder.interpolate({
         inputRange: [0, 1],
-        outputRange: [0, -28],
+        outputRange: [-10, -40],
     });
 
     const placeholderScale = animatedPlaceholder.interpolate({
@@ -49,7 +49,7 @@ const Input = ({ placeHolder, onChangeText, value }) => {
 
     const placeholderColor = animatedPlaceholder.interpolate({
         inputRange: [0, 1],
-        outputRange: ["#999", "#f9c22a"],
+        outputRange: ["#555", "#f9c22a"],
     });
 
     return (
@@ -95,16 +95,16 @@ const styles = StyleSheet.create({
         position: "relative",
     },
     textInput: {
-        borderBottomColor: "#454242",
+        borderBottomColor: "rgba(69,66,66,0.15)",
         borderBottomWidth: 1,
-        color: "#fff",
-        fontFamily: "dosis-regular",
+        color: "#333",
+        fontFamily: "nunito-light",
         fontSize: 20,
         paddingHorizontal: 10,
-        paddingVertical: 20,
+        paddingVertical: 10,
     },
     placeholder: {
-        fontFamily: "dosis-regular",
+        fontFamily: "nunito-regular",
         left: 10,
         position: "absolute",
         top: 25,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     toggleButton: {
         position: "absolute",
         right: 10,
-        top: 24,
+        top: 15,
     },
 });
 

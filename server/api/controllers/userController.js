@@ -67,7 +67,7 @@ export const signin = async (request, response) => {
     } catch (error) {
         response.status(500).json({ message: "Internal server error" });
     }
-}
+};
 
 export const signup = async (request, response) => {
     const { name, email, password } = request.body;

@@ -28,7 +28,6 @@ const userSchema = new mongoose.Schema({
     photo: {
         type: String,
         required: false,
-        default: "https://cdn-icons-png.flaticon.com/512/149/149071.png"
     },
     groups: [{
         type: mongoose.Schema.Types.ObjectId,

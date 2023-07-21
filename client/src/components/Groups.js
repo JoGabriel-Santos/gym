@@ -6,8 +6,6 @@ import * as API from "../api";
 const Groups = () => {
     const [groupList, setGroupList] = useState([]);
 
-    console.log(groupList)
-
     const renderGroup = ({ item: group }) => (
         <TouchableOpacity>
             <View style={styles.itemContainer}>
@@ -21,8 +19,6 @@ const Groups = () => {
             </View>
         </TouchableOpacity>
     );
-
-
 
     useEffect(() => {
         const fetchGroups = async () => {
@@ -81,13 +77,13 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize: 25,
-        fontFamily: "dosis-semiBold",
+        fontFamily: "nunito-semiBold",
         color: "#f9c22a",
     },
     schedule: {
         fontSize: 18,
         color: "#fff",
-        fontFamily: "dosis-regular",
+        fontFamily: "nunito-regular",
     },
 });
 

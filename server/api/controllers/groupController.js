@@ -8,7 +8,7 @@ export const fetchGroups = async (request, response) => {
     } catch (error) {
         response.status(409).json({ message: error });
     }
-}
+};
 
 export const registerGroup = async (request, response) => {
     const groupInfo = request.body;
@@ -22,4 +22,4 @@ export const registerGroup = async (request, response) => {
     } catch (error) {
         response.status(409).json({ message: error });
     }
-}
+};
