@@ -2,6 +2,7 @@ import React from "react";
 import { SafeAreaView, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+import GroupList from "../../components/GroupList";
 import styles from "./styles";
 
 const Groups = () => {
@@ -28,7 +29,7 @@ const Groups = () => {
                 </View>
             </View>
 
-            <Groups/>
+            <GroupList/>
         </SafeAreaView>
     )
 };

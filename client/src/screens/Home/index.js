@@ -65,7 +65,10 @@ const Home = () => {
             </View>
 
             <View style={styles.infoButtons}>
-                <TouchableOpacity style={[styles.infoButton, styles.groupButton]}>
+                <TouchableOpacity
+                    style={[styles.infoButton, styles.groupButton]}
+                    onPress={() => navigation.navigate("Groups")}
+                >
                     <Text style={[styles.infoText, styles.groupText]}>
                         Turmas disponíveis
                     </Text>
@@ -73,7 +76,7 @@ const Home = () => {
 
                 <TouchableOpacity
                     style={[styles.infoButton, styles.paymentButton]}
-                    onPress={() => navigation.navigate("Community")}
+                    onPress={() => navigation.navigate("Payment")}
                 >
                     <Text style={[styles.infoText, styles.paymentText]}>
                         Consultar mensalidades

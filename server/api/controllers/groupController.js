@@ -17,7 +17,7 @@ export const registerGroup = async (request, response) => {
 
     try {
         await newGroup.save();
-        response.status(200).json({ message: "Groups created successfully" });
+        response.status(200).json({ message: "GroupList created successfully" });
 
     } catch (error) {
         response.status(409).json({ message: error });

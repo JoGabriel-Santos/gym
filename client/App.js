@@ -17,12 +17,12 @@ function App() {
 
     return !fontsLoader ? null : (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Navigator screenOptions={{ headerShown: false }}><Stack.Screen name="Authentication" component={Authentication}/>
                 <Stack.Screen name="Home" component={Home}/>
                 <Stack.Screen name="Groups" component={Groups}/>
                 <Stack.Screen name="Payment" component={Payment}/>
                 <Stack.Screen name="Profile" component={Profile}/>
-                <Stack.Screen name="Authentication" component={Authentication}/>
+
             </Stack.Navigator>
 
             <Navbar/>

@@ -3,15 +3,15 @@ import { ActivityIndicator, FlatList, Image, View, Text, TouchableOpacity, Style
 
 import * as API from "../api";
 
-const Groups = () => {
+const GroupList = () => {
     const [groupList, setGroupList] = useState([]);
 
     const renderGroup = ({ item: group }) => (
-        <TouchableOpacity>
+        <TouchableOpacity style={styles.container}>
             <View style={styles.itemContainer}>
-                <Image style={styles.image} source={{ uri: group.image }} />
+                <Image style={styles.image} source={{ uri: group.image }}/>
 
-                <View style={styles.imageOverlay} />
+                <View style={styles.imageOverlay}/>
                 <View style={styles.textContainer}>
                     <Text style={styles.name}>{group.name}</Text>
                     <Text style={styles.schedule}>{group.schedule}</Text>
@@ -40,6 +40,7 @@ const Groups = () => {
 
     return (
         <FlatList
+            style={styles.groupsContainer}
             data={groupList}
             renderItem={renderGroup}
             keyExtractor={groupInfo => groupInfo._id.toString()}
@@ -48,6 +49,10 @@ const Groups = () => {
 };
 
 const styles = StyleSheet.create({
+    groupsContainer: {
+        marginHorizontal: 20,
+        marginTop: 10,
+    },
     itemContainer: {
         backgroundColor: "#fff",
         borderColor: "#f9c22a",
@@ -55,18 +60,18 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         flexDirection: "row",
         marginBottom: 16,
-        height: 160, // Definindo a altura do cartão para 160 pixels
+        height: 160,
     },
     image: {
         borderRadius: 8,
         flex: 1,
         height: null,
         width: null,
-        resizeMode: "cover", // Redimensionar a imagem para preencher o espaço
+        resizeMode: "cover",
     },
     imageOverlay: {
-        ...StyleSheet.absoluteFillObject, // Preencher todo o espaço disponível na camada
-        backgroundColor: "rgba(0, 0, 0, 0.3)", // Cor escura com 30% de opacidade
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: "rgba(0, 0, 0, 0.3)",
         borderRadius: 8,
     },
 
@@ -88,4 +93,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Groups;
+export default GroupList;
