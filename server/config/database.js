@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const CONNECTION_URL = "mongodb+srv://Gym:bgnHXy5wUKLMKljr@gym.nrqlsdt.mongodb.net/gym?retryWrites=true&w=majority";
+const CONNECTION_URL = "mongodb+srv://gym:7cMYmXkt2JD4L1rl@gym.pennzxv.mongodb.net/gym?retryWrites=true&w=majority";
 
 const connectDB = async () => {
     try {
